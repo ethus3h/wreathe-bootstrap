@@ -9,6 +9,7 @@ inherit git-r3
 DESCRIPTION="Third-party overlays used by Wreathe"
 HOMEPAGE="https://futuramerlin.com/"
 EGIT_REPO_URI="git://github.com/ethus3h/wreathe-overlays-redist.git"
+EGIT_COMMIT="${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"

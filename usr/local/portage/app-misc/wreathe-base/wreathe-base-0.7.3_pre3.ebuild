@@ -4,16 +4,15 @@
 
 EAPI="6"
 
-MY_PV="${PV:2}"
 DESCRIPTION="Wreathe"
 HOMEPAGE="https://futuramerlin.com/"
-SRC_URI="https://github.com/ethus3h/wreathe/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ethus3h/wreathe/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-S="${WORKDIR}/wreathe-${MY_PV}"
+S="${WORKDIR}/wreathe-${PV}"
 
 src_prepare() {
 	eapply_user
@@ -24,14 +23,15 @@ src_install() {
 	GLOBIGNORE="README.md:.git:.gitattributes:.gitconfig:usr:man:Makefile:build:.egup.tags:Wreathe"
 	insinto /
 	doins -r *
+	
+	fperms +x /etc/skel/.bash*
 
 	GLOBIGNORE="usr/bin"
 	insinto /usr/
 	doins -r usr/*
 
 	unset GLOBIGNORE
-	exeinto /usr/bin/
-	doexe usr/bin/*
+	dobin usr/bin/*
 
 	GLOBIGNORE="Wreathe/.Resources"
 	insinto /Wreathe/
